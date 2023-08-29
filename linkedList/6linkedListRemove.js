@@ -50,14 +50,12 @@ class LinkedList {
 			console.log(`index is out of bounds`);
 			return;
 		}
-		// at the start
-		else if (index === 0) {
-			this.prepend(value);
+		// at the start or end
+		else if (index < 0 || index > this.size) {
+			console.log(`index is out of bounds`);
+			return;
 		}
-		// at the end
-		else if (index === this.size) {
-			this.append(value);
-		}
+
 		// at in between
 		else {
 			const node = new Node(value);

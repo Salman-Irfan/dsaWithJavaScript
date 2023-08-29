@@ -66,9 +66,42 @@ class LinkedList {
 				prev = prev.next;
 			}
 			node.next = prev.next;
-            prev.next = node;
-            this.size++;
+			prev.next = node;
+			this.size++;
 		}
+	}
+	// 6. removefrom
+	removeFrom(index) {
+		// if index is out of bounds
+		let removedNode;
+		if (index < 0 || index >= this.size) {
+			console.log(`index ${index} out of bounds`);
+		}
+		// remove from start
+		else if (index === 0) {
+			removedNode = this.head;
+			this.head = this.head.next;
+		}
+		// remove from end
+		else if (index === this.size - 1) {
+			let prev = this.head;
+			for (let i = 0; i < index - 1; i++) {
+				prev = prev.next;
+			}
+			removedNode = prev.next;
+			prev.next = null;
+		}
+		// remove in between
+        else {
+            let prev = this.head
+			for (let i = 0; i < index - 1; i++) {
+				prev = prev.next;
+			}
+			removedNode = prev.next;
+			prev.next = removedNode.next;
+		}
+		this.size--;
+		return removedNode.value;
 	}
 	// 3. print
 	print() {
@@ -90,6 +123,7 @@ const list1 = new LinkedList();
 console.log(`isEmpty: ${list1.isEmpty()}`);
 console.log(`getSize: ${list1.getSize()}`);
 list1.print();
+// prepending
 console.log(`prependMethod`);
 list1.prepend(10);
 list1.print();
@@ -100,6 +134,7 @@ list1.print();
 list1.prepend(30);
 list1.print();
 console.log(`getSize: ${list1.getSize()}`);
+// appending
 console.log(`appendMethod`);
 list1.append(40);
 list1.print();
@@ -108,12 +143,24 @@ list1.print();
 list1.append(60);
 list1.print();
 console.log(`getSize: ${list1.getSize()}`);
-list1.insert(70,6);
+// inserting
+list1.insert(70, 6);
 list1.print();
 console.log(`getSize: ${list1.getSize()}`);
-list1.insert(80,-1);
+list1.insert(80, -1);
 list1.print();
 console.log(`getSize: ${list1.getSize()}`);
-list1.insert(80,2);
+list1.insert(80, 2);
+list1.print();
+console.log(`getSize: ${list1.getSize()}`);
+// removing
+console.log(`removing`);
+console.log(`list1.removeFrom(0) ${list1.removeFrom(0)}`);
+list1.print();
+console.log(`getSize: ${list1.getSize()}`);
+console.log(`list1.removeFrom(6) ${list1.removeFrom(6)}`);
+list1.print();
+console.log(`getSize: ${list1.getSize()}`);
+console.log(`list1.removeFrom(1) ${list1.removeFrom(1)}`);
 list1.print();
 console.log(`getSize: ${list1.getSize()}`);

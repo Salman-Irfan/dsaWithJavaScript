@@ -133,6 +133,35 @@ class LinkedList {
 			return null;
 		}
 	}
+	// 9. search by value
+	searchValue(value) {
+		// initialize index = 0
+		let i = 0;
+		// if linked list is empty
+		if (this.isEmpty()) {
+			console.log(`linked list is empty`);
+			return null;
+		}
+		// handle 1st node
+		else if (this.head.value === value) {
+			return i;
+		}
+		// handle other nodes
+		else {
+			let curr = this.head;
+			while (curr) {
+				if (curr.value === value) {
+					return i;
+				} else {
+					curr = curr.next;
+					i++;
+				}
+			}
+			// if not matching anything
+			console.log(`no value found`);
+			return -1;
+		}
+	}
 	// 4. print
 	print() {
 		// if linked list is empty
@@ -209,4 +238,11 @@ list1.print();
 console.log(`getSize: ${list1.getSize()}`);
 console.log(list1.removeValue(20));
 list1.print();
-console.log(`getSize: ${list1.getSize()}`);
+console.log( `getSize: ${ list1.getSize() }` );
+// search by value and return index
+console.log( `################################` )
+console.log( `search by value and return index` )
+console.log(`list1.searchValue( 10 ): ${list1.searchValue(10)}`);
+console.log(`list1.searchValue( 50 ): ${list1.searchValue(50)}`);
+console.log(`list1.searchValue( 60 ): ${list1.searchValue(60)}`);
+console.log(`list1.searchValue( 70 ): ${list1.searchValue(70)}`);

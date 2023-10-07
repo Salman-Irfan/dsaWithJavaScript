@@ -26,7 +26,7 @@ class LinkedList {
 			console.log("List is empty");
 			return;
 		} else {
-            let current = this.head;
+			let current = this.head;
 			while (current) {
 				console.log(current.value);
 				current = current.next;
@@ -52,7 +52,6 @@ class LinkedList {
 			this.head = newNode;
 			this.tail = newNode;
 		} else {
-			// pointing the tail pointer to the new node
 			this.tail.next = newNode;
 			this.tail = newNode;
 		}
@@ -92,19 +91,55 @@ class LinkedList {
 		return value;
 	}
 }
+// linkedlist stack - LIFO
+class LinkedListStack {
+	constructor() {
+		this.list = new LinkedList;
+	}
+	// push that accepts the value
+	push(value) {
+		this.list.prepend(value);
+	}
+	// pop that remove element from last inserted element
+	pop(){
+		return this.list.removeFromFront();
+	}
+	// peak
+	peak(){
+		return this.list.head.value;
+	}
+	// helper functions
+	isEmpty(){
+		return this.list.isEmpty();
+	}
+	// get size
+	getSize(){
+		return this.list.getSize();
+	}
+	// print
+	print(){
+		this.list.print();
+	}
+}
 
-let list1 = new LinkedList();
-list1.append(10);
-list1.append(20);
-list1.append(30);
-list1.append(40);
-list1.append(50);
-list1.append(60);
-list1.append(70);
-list1.append(80);
-list1.print();
-console.log(list1.getSize());
-console.log(list1.removeFromFront());
-list1.print();
-console.log(list1.removeFromEnd());
-list1.print();
+// instantiating the stack linked list object
+const stackedLinkedList1 = new LinkedListStack();
+console.log(stackedLinkedList1.isEmpty());
+
+// push
+stackedLinkedList1.push(10)
+stackedLinkedList1.push(15)
+stackedLinkedList1.push(20)
+stackedLinkedList1.print();
+// get size
+console.log(stackedLinkedList1.getSize());
+
+// peak
+console.log(stackedLinkedList1.peak());
+// print
+stackedLinkedList1.print();
+
+// pop
+console.log(stackedLinkedList1.pop());
+// print
+stackedLinkedList1.print();
